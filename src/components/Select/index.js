@@ -15,10 +15,17 @@ const Select = ({
 }) => {
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
+  // const changeValue = (newValue) => {
+  //   onChange();
+  //   setValue(newValue);
+  //   setCollapsed(newValue);
+  // };
+
   const changeValue = (newValue) => {
-    onChange();
+    console.log("New value selected:", newValue);
+    onChange(newValue); // Pass the new value to the onChange function
     setValue(newValue);
-    setCollapsed(newValue);
+    setCollapsed(true); // This should be setCollapsed(true)
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">

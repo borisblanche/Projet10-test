@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EventCard from "../../components/EventCard";
 import Select from "../../components/Select";
 import { useData } from "../../contexts/DataContext";
@@ -34,7 +34,9 @@ const EventList = () => {
       : data?.events.filter((event) => event.type === type)) || []
   ).filter((event, index) => (currentPage - 1) * PER_PAGE <= index && PER_PAGE * currentPage > index);
   
-
+  useEffect(() => {
+    console.log("Filtered Events:", filteredEvents);
+  }, [filteredEvents]);
 
   const changeType = (evtType) => {
     console.log("Valeur sélectionnée :", evtType);
@@ -71,6 +73,7 @@ const EventList = () => {
                     date={new Date(event.date)}
                     label={event.type}
                   />
+                  
                 )}
               </Modal>
             ))}

@@ -23,9 +23,6 @@ const Page = () => {
  
   const last = data.focus[data.focus.length - 1];
 
- 
-  console.log('last', last);
-
   
   if (!last || !last.title) {
     return <div>Loading...</div>; 

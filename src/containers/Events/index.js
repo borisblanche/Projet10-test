@@ -13,21 +13,6 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  // const filteredEvents = (
-  //   (!type
-  //     ? data?.events
-  //     : data?.events) || []
-  // ).filter((event, index) => {
-  //   console.log("Event:", event);
-  //   if (
-  //     (currentPage - 1) * PER_PAGE <= index &&
-  //     PER_PAGE * currentPage > index
-  //   ) {
-  //     return true;
-  //   }
-  //   return false;
-  // });
-  
   const filteredEvents = (
     (!type
       ? data?.events
@@ -35,11 +20,9 @@ const EventList = () => {
   ).filter((event, index) => (currentPage - 1) * PER_PAGE <= index && PER_PAGE * currentPage > index);
   
   useEffect(() => {
-    console.log("Filtered Events:", filteredEvents);
   }, [filteredEvents]);
 
   const changeType = (evtType) => {
-    console.log("Valeur sélectionnée :", evtType);
     setCurrentPage(1);
     setType(evtType);
   };
@@ -57,7 +40,6 @@ const EventList = () => {
                     <Select
   selection={Array.from(typeList)}
   onChange={(value) => {
-    console.log("value", value);
     changeType(value || null);
   }}
 />
